@@ -28,6 +28,9 @@
   <h2>Pre-Uso Maquinaria FT-231</h2>
   <form id="formularioOffline">
 
+    <label>Correo electrónico *</label>
+    <input type="email" id="email" required autocomplete="off">
+
     <label>Nombre del Operador *</label>
     <input type="text" id="operador" required autocomplete="off">
 
@@ -292,6 +295,7 @@
 
           const registro = {
             id:         Date.now(),
+            email:      document.getElementById('email').value.trim(),
             operador:   document.getElementById('operador').value.trim(),
             obra:       document.getElementById('obra').value,
             tipoActivo: document.getElementById('tipoActivo').value,
@@ -304,6 +308,7 @@
             ...dictRespuestas
           };
 
+          if (!registro.email)      throw new Error('Debe ingresar el correo electrónico.');
           if (!registro.operador)   throw new Error('Debe ingresar el nombre del operador.');
           if (!registro.obra)       throw new Error('Debe seleccionar la obra.');
           if (!registro.tipoActivo) throw new Error('Debe seleccionar el tipo de activo.');
