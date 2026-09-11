@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ft231-v4';
+const CACHE_NAME = 'ft231-v5';
 const urlsToCache = [
   './',
   './index.html',
@@ -26,15 +26,13 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  // Las llamadas a Apps Script nunca van a caché
   if (e.request.url.includes('script.google.com')) {
     e.respondWith(fetch(e.request));
     return;
   }
-  // Para todo lo demás (html, manifest), busca en caché primero
   e.respondWith(
     caches.match(e.request).then(response => {
       return response || fetch(e.request);
-    })
+    }).catch(() => caches.match('./index.html'))
   );
 });
