@@ -91,7 +91,6 @@
 </div>
 
 <script>
-
   const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbyziMB-PPdhEEhDjtgy-nzJ8c7HLv3VNMbVrSmufKD09U9LzwfYcK4hYU4pbw4PkF6Efw/exec";
 
   const todasLasPreguntas = {
@@ -284,7 +283,6 @@
     getBase64Comprimido(document.getElementById('fotoHorometro').files[0], function(b64Horo) {
       getBase64Comprimido(document.getElementById('fotoNovedad').files[0], function(b64Novedad) {
         try {
-
           let dictRespuestas = {};
           for (const cat in todasLasPreguntas) {
             const items = todasLasPreguntas[cat];
