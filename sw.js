@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ft231-v5';
+const CACHE_NAME = 'ft231-v6';
 const urlsToCache = [
   './',
   './index.html',
@@ -9,7 +9,6 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Abriendo caché y guardando archivos');
         return cache.addAll(urlsToCache);
       })
   );
