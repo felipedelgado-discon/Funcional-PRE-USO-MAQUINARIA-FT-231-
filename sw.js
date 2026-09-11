@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ft231-v6';
+const CACHE_NAME = 'ft231-v8';
 const urlsToCache = [
   './',
   './index.html',
@@ -8,9 +8,7 @@ const urlsToCache = [
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
+      .then(cache => cache.addAll(urlsToCache))
   );
   self.skipWaiting();
 });
@@ -18,7 +16,14 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+      Promise.all(
+        keys.map(k => {
+          // SOLO borra las memorias viejas del ft231, ignora las del 230
+          if (k.startsWith('ft231-') && k !== CACHE_NAME) {
+            return caches.delete(k);
+          }
+        })
+      )
     )
   );
   return self.clients.claim();
