@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pre-Uso Maquinaria FT-231</title>
+  <link rel="manifest" href="manifest.json">
   <style>
     body { font-family: Arial, sans-serif; padding: 15px; background-color: #f4f4f9; margin: 0; }
     .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
@@ -293,8 +294,12 @@
             }
           }
 
+          const ahora = new Date();
+          const fechaHoraLocal = ahora.toLocaleDateString('es-CO') + " a las " + ahora.toLocaleTimeString('es-CO', {hour: '2-digit', minute:'2-digit'});
+
           const registro = {
             id:         Date.now(),
+            fechaCaptura: fechaHoraLocal,
             email:      document.getElementById('email').value.trim(),
             operador:   document.getElementById('operador').value.trim(),
             obra:       document.getElementById('obra').value,
