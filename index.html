@@ -293,7 +293,12 @@
           }
 
           const ahora = new Date();
-          const fechaHoraLocal = ahora.toLocaleDateString('es-CO') + " a las " + ahora.toLocaleTimeString('es-CO', {hour: '2-digit', minute:'2-digit'});
+          const ano = ahora.getFullYear();
+          const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+          const dia = String(ahora.getDate()).padStart(2, '0');
+          const hora = ahora.toLocaleTimeString('es-CO', {hour: '2-digit', minute:'2-digit'});
+
+          const fechaHoraLocal = `${ano}/${mes}/${dia} a las ${hora}`;
 
           const registro = {
             id:         Date.now(),
