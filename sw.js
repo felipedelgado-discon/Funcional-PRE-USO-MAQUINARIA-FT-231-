@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ft231-v8';
+const CACHE_NAME = 'ft231-v9';
 const urlsToCache = [
   './',
   './index.html',
